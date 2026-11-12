@@ -1,0 +1,43 @@
+# ==============================================================================
+# Serve Configuration
+# ==============================================================================
+
+http: # Host to bind the HTTP server to.
+  # Use "127.0.0.1" for local-only / reverse proxy, or "0.0.0.0" to listen on all interfaces.
+  host: "127.0.0.1"
+  # Port to listen on (default: 4000)
+  port: 4000
+  # Legacy x-api-key header check (optional, false by default)
+  require-api-key: false
+  api-secret-key: ""
+
+security: # Require RSA-SHA256 signature verification on all incoming API requests (default: true)
+  # Requests must include 'x-api-signature' and 'x-api-timestamp' headers signed by the matching private key.
+  require-rsa-signature: true
+  # Maximum clock skew allowed for timestamps in seconds to prevent replay attacks (default: 300 = 5 minutes)
+  allowed-clock-skew-seconds: 300
+  # Path to public key PEM file (relative to plugin data folder or absolute)
+  public-key-path: "keys/public_key.pem"
+  # Path to private key PEM file (generated automatically on first run for export to Viewer)
+  private-key-path: "keys/private_key.pem"
+
+database:
+  host: "127.0.0.1"
+  port: 3306
+  user: "46770d6"
+  password: "7f04916"
+  # Database name for Wildy server (cmi, mcmmo, griefprevention)
+  database-wc: "msdwc"
+  # Database name for Global server (luckperms)
+  database-gl: "msdgl"
+  # Connection pool settings
+  maximum-pool-size: 10
+  minimum-idle: 2
+  connection-timeout-ms: 5000
+
+cache: # Cache TTL in seconds for API stats query results to minimize DB load (0 to disable)
+  ttl-seconds: 10
+
+# Optional custom world directory path.
+# Leave empty to automatically resolve from the server's primary world.
+world-dir: ""

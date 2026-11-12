@@ -1,0 +1,18 @@
+name: Serve
+version: '${project.version}'
+main: stats.Serve
+api-version: '1.21'
+description: Lightweight Stats REST API Plugin
+author: Everest
+commands:
+  serve:
+    description: Serve plugin commands
+    permission: serve.admin
+    usage: /<command> [reload]
+permissions:
+  serve.admin:
+    description: Allows reloading Serve configuration
+    default: op
+libraries:
+  - com.zaxxer:HikariCP:6.2.1
+  - com.mysql:mysql-connector-j:9.2.0
